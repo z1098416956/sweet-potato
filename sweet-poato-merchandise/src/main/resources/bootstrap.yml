@@ -1,0 +1,8 @@
+
+spring:
+  profiles:
+    # Profile 的配置项
+    active: dev
+  application:
+    # 应用名称
+    name: merchandise-service
