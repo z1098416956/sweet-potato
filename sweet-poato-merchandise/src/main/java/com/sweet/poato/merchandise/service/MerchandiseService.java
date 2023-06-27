@@ -1,5 +1,6 @@
 package com.sweet.poato.merchandise.service;
 
+import sweet.poato.res.Test;
 import sweet.poato.result.Result;
 
 /**
@@ -10,4 +11,6 @@ import sweet.poato.result.Result;
 public interface MerchandiseService {
 
     public Result<String> getTestInfo();
+
+    public Result<Test> getTestDTO();
 }

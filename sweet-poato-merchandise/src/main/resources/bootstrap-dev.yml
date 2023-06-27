@@ -3,10 +3,13 @@ spring:
     nacos:
       # Nacos 配置中心
       config:
-        server-addr: 192.168.3.114:8848
+        server-addr: 192.168.3.122:8848
         namespace: zzj
         file-extension: yml
       # Nacos 注册中心
       discovery:
-        server-addr: 192.168.3.114:8848
+        server-addr: 192.168.3.122:8848
         namespace: zzj
+    alibaba:
+      seata:
+        tx-service-group: default_tx_group

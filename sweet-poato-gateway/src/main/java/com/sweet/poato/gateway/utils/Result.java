@@ -1,5 +1,7 @@
 package com.sweet.poato.gateway.utils;
 
+import com.sweet.poato.gateway.code.ResultCode;
+
 import java.io.Serializable;
 
 /**
@@ -60,11 +62,27 @@ public class Result<T> implements Serializable {
         result.isSuccess = false;
         result.data = data;
         result.message = message;
-        result.code = 0;
+        result.code = 500;
         return result;
     }
 
+    public static<T> Result forbidden(T data){
+        Result<T> result = new Result<T>();
+        result.isSuccess = false;
+        result.data = data;
+        result.message = ResultCode.FORBIDDEN.getMessage();
+        result.code = ResultCode.FORBIDDEN.getCode();
+        return result;
+    }
 
+    public static<T> Result unauthorized(T data){
+        Result<T> result = new Result<T>();
+        result.isSuccess = false;
+        result.data = data;
+        result.message = ResultCode.UNAUTHORIZED.getMessage();
+        result.code = ResultCode.UNAUTHORIZED.getCode();
+        return result;
+    }
     public Result(){}
 
     public Result(Boolean isSuccess, String message, T data, Integer code) {

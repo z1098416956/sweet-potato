@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweet.poato.merchandise.dao.StudentDao">
+
+    <select id="queryStudentPage" resultType="sweet.poato.res.student.StudentListVO">
+        SELECT
+            t1.id,
+            t1.user_name `name`,
+            t1.phone,
+            '18' age ,
+            t1.sex,
+            t1.hometown address
+        FROM
+            t_student t1
+        <where>
+            <if test="name != null and name != ''">
+                and t1.user_name like concat('%' ,#{name}, '%')
+            </if>
+        </where>
+    </select>
+    <select id="queryWorkPage" resultType="sweet.poato.res.student.WorkPageVO">
+        SELECT t1.id , t1.id classId , t1.name title , t1.show_type completed FROM `s_classes` t1
+    </select>
+</mapper>

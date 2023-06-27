@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import sweet.poato.res.Test;
 import sweet.poato.result.Result;
 
 /**
@@ -24,5 +25,12 @@ public class MerchandiseController  {
     public Result<String> getTestInfo() {
 
         return merchandiseService.getTestInfo();
+    }
+
+
+    @RequestMapping(value = "/getTestDTO",method = RequestMethod.GET)
+    public Result<Test> getTestDTO(){
+
+        return merchandiseService.getTestDTO();
     }
 }

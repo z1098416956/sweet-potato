@@ -1,5 +1,8 @@
 package sweet.poato.result;
 
+import sweet.poato.enums.CommonErrorCode;
+import sweet.poato.enums.ErrorCode;
+
 import java.io.Serializable;
 
 /**
@@ -30,7 +33,7 @@ public class Result<T> implements Serializable {
     private Integer code;
 
 
-    public static Result success(Integer code,String message){
+    public static<T> Result<T> success(Integer code,String message){
         Result result = new Result();
         result.code = code;
         result.message = message;
@@ -38,7 +41,7 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public static<T>Result success(String message,T data){
+    public static<T> Result<T> success(String message,T data){
         Result<T> result = new Result<T>();
         result.isSuccess = true;
         result.data = data;
@@ -47,7 +50,24 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public static Result error(Integer code,String message){
+    public static<T> Result<T> error(ErrorCode errorCode){
+        Result result = new Result();
+        result.code = errorCode.getCode();
+        result.message = errorCode.getMessage();
+        result.isSuccess = false;
+        return result;
+    }
+
+
+    public static<T> Result<T> error(CommonErrorCode commonErrorCode){
+        Result result = new Result();
+        result.code = commonErrorCode.getCode();
+        result.message = commonErrorCode.getMessage();
+        result.isSuccess = false;
+        return result;
+    }
+
+    public static<T> Result<T> error(Integer code,String message){
         Result result = new Result();
         result.code = code;
         result.message = message;
@@ -55,7 +75,7 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public static<T>Result error(String message,T data){
+    public static<T> Result<T> error(String message,T data){
         Result<T> result = new Result<T>();
         result.isSuccess = false;
         result.data = data;
